@@ -80,5 +80,6 @@ $  git clone https://github.com/yourusername/appointment-scheduling-app.git
 
 
 ## Project Setup 
-[Frontend Setup](https://github.com/Asad474/Quiz-App/frontend)
-[Backend Setup](https://github.com/Asad474/Quiz-App/backend)
+[Frontend Setup](https://github.com/Asad474/Appointment-Scheduling-App/frontend)
+
+[Backend Setup](https://github.com/Asad474/Appointment-Scheduling-App/backend)

@@ -47,7 +47,7 @@ $ require('crypto').randomBytes(64).toString('hex')
 
 If you are using gmail service in email Configuration, then use `app passowrd` in `HOST_PASSWORD`
 
-For more info, refer [Sign In with App Password](https://support.google.com/accounts/answer/185833?hl=en){:target="_blank"}
+For more info, refer [Sign In with App Password](https://support.google.com/accounts/answer/185833?hl=en)
 
 
 ### 3. Start Backend Server
