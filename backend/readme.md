@@ -15,7 +15,7 @@ $ npm install
 
 ### 2. Adding environment variables to .env file
 
-You need to create .env file to store Environment Variables.
+You need to create .env file to store Environment Variables under the root directory.
 
 ```bash
 NODE_ENV=development
