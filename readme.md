@@ -73,6 +73,12 @@ This is an appointment scheduling app that allows users to schedule appointments
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/appointment-scheduling-app.git
+Clone the repository:
+```bash
+$  git clone https://github.com/yourusername/appointment-scheduling-app.git
+```
+
+
+## Project Setup 
+[Frontend Setup](https://github.com/Asad474/Quiz-App/frontend)
+[Backend Setup](https://github.com/Asad474/Quiz-App/backend)
