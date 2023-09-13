@@ -75,11 +75,11 @@ This is an appointment scheduling app that allows users to schedule appointments
 
 Clone the repository:
 ```bash
-$  git clone https://github.com/yourusername/appointment-scheduling-app.git
+$  git clone https://github.com/Asad474/Appointment-Scheduling-App.git
 ```
 
 
 ## Project Setup 
-[Backend Setup](https://github.com/Asad474/Appointment-Scheduling-App/tree/main/backend)
+1. [Backend Setup](https://github.com/Asad474/Appointment-Scheduling-App/tree/main/backend)
 
-[Frontend Setup](https://github.com/Asad474/Appointment-Scheduling-App/tree/main/frontend)
+2. [Frontend Setup](https://github.com/Asad474/Appointment-Scheduling-App/tree/main/frontend)
