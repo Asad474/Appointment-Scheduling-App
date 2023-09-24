@@ -16,7 +16,7 @@ import availabilityRoutes from './routes/availabilityRoutes.js';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 8040;
+const port = 8080;
 
 connDB();
 

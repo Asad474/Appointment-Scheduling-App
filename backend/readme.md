@@ -20,8 +20,6 @@ You need to create .env file to store Environment Variables under the root direc
 ```bash
 NODE_ENV=development
 
-PORT='Port No(eg: 8080, 8040)'
-
 JWT_SECRET='JWT secret should be a long, random string of characters. Longer secrets are generally more secure than shorter ones. '
 
 #Database Configurations
