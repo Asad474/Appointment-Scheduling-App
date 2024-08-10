@@ -5,9 +5,6 @@ import cors from 'cors';
 
 import {connDB} from './config/db.js';
 import {notFound, errorHandler} from './middleware/errorMiddleware.js';
-import User from "./models/userModel.js";
-import Consultant from "./models/consultantModel.js";
-import Appointment from "./models/appointmentModel.js";
 import userRoutes from './routes/userRoutes.js';
 import consultantRoutes from './routes/consultantRoutes.js';
 import appointmentRoutes from './routes/appointmentRoutes.js';
@@ -19,10 +16,6 @@ const app = express();
 const port = 8080;
 
 connDB();
-
-User.sync();
-Consultant.sync();
-Appointment.sync();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
