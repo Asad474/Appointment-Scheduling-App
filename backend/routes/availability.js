@@ -1,8 +1,8 @@
 import express from 'express';
 import {
     allavailabilties,
-} from '../controllers/availablityController.js';
-import protect from '../middleware/authMiddleware.js';
+} from '../controllers/availablity.js';
+import protect from '../middleware/auth.js';
 
 const router = express.Router();
 

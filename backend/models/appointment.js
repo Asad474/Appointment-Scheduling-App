@@ -1,9 +1,9 @@
 import { sequelize } from "../config/db.js";
 import { DataTypes } from "sequelize";
-import User from "./userModel.js";
-import Consultant from "./consultantModel.js";
+import { User } from "./user.js";
+import { Consultant } from "./consultant.js";
 
-const Appointment = sequelize.define('Appointment', {
+export const Appointment = sequelize.define('Appointment', {
     date: {
         type: DataTypes.DATEONLY,
         allowNull: false

@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import cors from 'cors';
 
 import { connDB } from './config/db.js';
-import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import { notFound, errorHandler } from './middleware/error.js';
 import setUpRoutes from "./routes/index.js";
 dotenv.config();
 

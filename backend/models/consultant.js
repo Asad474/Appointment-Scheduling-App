@@ -1,8 +1,8 @@
 import { sequelize } from "../config/db.js";
 import { DataTypes } from 'sequelize';
-import User from "./userModel.js";
+import { User } from "./user.js";
 
-const Consultant = sequelize.define('Consultant', {
+export const Consultant = sequelize.define('Consultant', {
     start_time: {
         type: DataTypes.TIME,
         allowNull: false
@@ -32,5 +32,3 @@ User.hasOne(Consultant, {
 });
 
 Consultant.belongsTo(User);
-
-export default Consultant;

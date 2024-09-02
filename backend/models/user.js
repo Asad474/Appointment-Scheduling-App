@@ -2,7 +2,7 @@ import { sequelize } from "../config/db.js";
 import { DataTypes } from "sequelize";
 import bcrypt from "bcrypt";
 
-const User = sequelize.define(
+export const User = sequelize.define(
     'User', 
     {
         name: {
@@ -46,5 +46,3 @@ User.beforeCreate(async(user) => {
 User.prototype.validPassword = async function(password){
     return await bcrypt.compare(password, this.password);
 };
-
-export default User;

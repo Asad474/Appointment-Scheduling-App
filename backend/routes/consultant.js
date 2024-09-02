@@ -3,8 +3,8 @@ import {
     getConsultant,
     availability,
     updateAvailability,
-} from '../controllers/consultantController.js';
-import protect from '../middleware/authMiddleware.js';
+} from '../controllers/consultant.js';
+import protect from '../middleware/auth.js';
 
 const router = express.Router();
 

@@ -1,20 +1,19 @@
 import asyncHandler from 'express-async-handler';
-import Consultant from "../models/consultantModel.js";
-import User from "../models/userModel.js";
+import { User, Consultant } from '../models/index.js';
+import { BadRequestError, UnauthorizedError } from '../utils/errors/index.js';
 
 
 // @desc Consultant Info
 // route GET /api/consultant/:id
 // @access PRIVATE
-const getConsultant = asyncHandler(async(req, res) => {
+export const getConsultant = asyncHandler(async(req, res) => {
     const consultant = await Consultant.findOne({
-        where: {UserId: req.params.id},
-        include: [{model: User, attributes: ['name', 'email']}],
+        where: { UserId: req.params.id },
+        include: [{ model: User, attributes: ['name', 'email'] }],
     });
 
     if (!consultant){
-        res.status(401);
-        throw new Error('Consultant does not exist.');
+        throw new UnauthorizedError('Consultant does not exist.');
     };
 
     res.status(200).json({
@@ -32,26 +31,23 @@ const getConsultant = asyncHandler(async(req, res) => {
 // @desc Post Consultant Availability
 // route POST /api/consultant/availability
 // @access PRIVATE
-const availability = asyncHandler(async(req, res) => {
+export const availability = asyncHandler(async(req, res) => {
     if (!req.user.isConsultant){
-        res.status(401);
-        throw new Error('User not authorized.');
+        throw new UnauthorizedError('User not authorized.');
     };
 
     const availabilityExists = await Consultant.findOne({
-        where: {UserId: req.user.id}
+        where: { UserId: req.user.id }
     });
 
     if (availabilityExists){
-        res.status(400);
-        throw new Error('Consultant can have only one availability.');
+        throw new BadRequestError('Consultant can have only one availability.');
     };
 
-    const {start_time, end_time, breaks, DaysOff} = req.body;
+    const { start_time, end_time, breaks, DaysOff } = req.body;
 
     if (!start_time || !end_time || !breaks || !DaysOff){
-        res.status(400);
-        throw new Error('All input details are required');        
+        throw new BadRequestError('All input details are required'); 
     };
 
     const obj = await Consultant.create({
@@ -62,36 +58,33 @@ const availability = asyncHandler(async(req, res) => {
         UserId: req.user.id,
     });
 
-    if (obj){
+    if (obj) {
         res.status(201).json({
             start_time: obj.start_time,
             end_time: obj.end_time,
             breaks: obj.breaks,
             DaysOff: obj.DaysOff,
         });
-    } else{
-        res.status(400);
-        throw new Error('Invalid Consultant data.');
+    } else {
+        throw new BadRequestError('Invalid Consultant data.');
     }
 });
 
 // @desc Update Consultant Availability
 // route PUT /api/consultant/availability
 // @access PRIVATE
-const updateAvailability = asyncHandler(async(req, res) => {
+export const updateAvailability = asyncHandler(async(req, res) => {
     if (!req.user.isConsultant){
-        res.status(401);
-        throw new Error('User not authorized.');
+        throw new UnauthorizedError('User not authorized.');
     };
 
     const obj = await Consultant.findOne({
-        where: {UserId: req.user.id},
-        include: [{model: User, attributes: ['name', 'email']}]
+        where: { UserId: req.user.id },
+        include: [{ model: User, attributes: ['name', 'email'] }]
     });
 
-    if (!obj){
-        res.status(401);
-        throw new Error('Consultant does not have availability.');
+    if (!obj) {
+        throw new BadRequestError('Consultant does not have availability.');
     }
 
     obj.start_time = req.body.start_time || obj.start_time;
@@ -109,10 +102,3 @@ const updateAvailability = asyncHandler(async(req, res) => {
         DaysOff: updated_obj.DaysOff,
     });
 });
-
-
-export {
-    getConsultant,
-    availability,
-    updateAvailability,
-};
