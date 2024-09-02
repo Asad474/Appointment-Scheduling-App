@@ -23,11 +23,7 @@ NODE_ENV=development
 JWT_SECRET='JWT secret should be a long, random string of characters. Longer secrets are generally more secure than shorter ones. '
 
 #Database Configurations
-DATABASE_NAME='Your mysql database name'
-DATABASE_HOST='Your mysql database host(eg: localhost)'
-DATABASR_USER='Your mysql database user'
-DATABASE_PASSWORD='Your mysql database password'
-DATABASE_PORT='Your mysql database port'
+DATABASE_URL='Your Postgres Database connection string'
 
 #EMAIL Configurations
 MAIL_SERVICE='eg: gmail, yahoo etc'

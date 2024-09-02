@@ -15,6 +15,6 @@ router.post('/login', loginUser);
 router.post('/logout', logoutUser);
 router.route('/userprofile')
     .get(protect, getUserProfile)
-    .put(protect, updateUserProfile);
+    .patch(protect, updateUserProfile);
 
 export default router;
