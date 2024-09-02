@@ -1,8 +1,7 @@
-import { CustomError } from "../utils/errors/index.js";
+import { CustomError, NotFoundError } from "../utils/errors/index.js";
 
 export const notFound = (req, res, next) => {
-    const error = new Error(`Not found - ${req.originalUrl}`);
-    res.status(404);
+    const error = new NotFoundError(`Not found - ${req.originalUrl}`);
     next(error);
 };
 
