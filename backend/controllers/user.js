@@ -9,9 +9,9 @@ import { BadRequestError } from "../utils/errors/index.js";
 export const registerUser = asyncHandler(async(req, res) => {
     const { name, email, password } = req.body;
 
-    if (!name || !email || !password){
-        throw new BadRequestError('All input details are required.');
-    }
+    // if (!name || !email || !password){
+    //     throw new BadRequestError('All input details are required.');
+    // }
 
     const userExists = await User.findOne({ where: { email } });
 
@@ -35,9 +35,9 @@ export const registerUser = asyncHandler(async(req, res) => {
 export const loginUser = asyncHandler(async(req, res) => {
     const { email, password } = req.body;
 
-    if (!email || !password){
-        throw new BadRequestError('All input details are required.')
-    }
+    // if (!email || !password){
+    //     throw new BadRequestError('All input details are required.')
+    // }
 
     const user = await User.findOne({ where: { email } });
 
