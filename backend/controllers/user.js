@@ -87,10 +87,7 @@ export const updateUserProfile = asyncHandler(async(req, res) => {
 
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
-
-    if (req.body.isConsultant) {
-        user.isConsultant = req.body.isConsultant;
-    };
+    user.isConsultant = req.body.isConsultant || user.isConsultant;
 
     const updated_user = await user.save();
 
