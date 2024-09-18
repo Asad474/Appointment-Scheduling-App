@@ -41,3 +41,31 @@ export const loginValidaor = [
         .notEmpty()
         .withMessage('Password is required.')
 ];
+
+export const updateUserValidator = [
+    body('name')
+        .optional()
+        .trim()
+        .escape()
+        .matches(/^[a-zA-Z ]{2,30}$/)
+        .withMessage('Username can only contains alphabets upto 30 characters'),
+    
+    body('email')    
+        .optional()
+        .trim()
+        .normalizeEmail()
+        .isEmail()
+        .withMessage('Email is invalid.'),
+
+    body('isAdmin')    
+        .optional()
+        .trim()
+        .isBoolean()
+        .withMessage('isAdmin field should be boolean type.'),
+
+    body('isConsultant')    
+        .optional()
+        .trim()
+        .isBoolean()
+        .withMessage('isConsultant field should be boolean type.'),
+];

@@ -9,10 +9,6 @@ import { BadRequestError } from "../utils/errors/index.js";
 export const registerUser = asyncHandler(async(req, res) => {
     const { name, email, password } = req.body;
 
-    // if (!name || !email || !password){
-    //     throw new BadRequestError('All input details are required.');
-    // }
-
     const userExists = await User.findOne({ where: { email } });
 
     if (userExists){
@@ -34,10 +30,6 @@ export const registerUser = asyncHandler(async(req, res) => {
 // @access PUBLIC
 export const loginUser = asyncHandler(async(req, res) => {
     const { email, password } = req.body;
-
-    // if (!email || !password){
-    //     throw new BadRequestError('All input details are required.')
-    // }
 
     const user = await User.findOne({ where: { email } });
 
@@ -95,14 +87,6 @@ export const updateUserProfile = asyncHandler(async(req, res) => {
 
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
-
-    if (req.body.password) {
-        user.password = req.body.password;
-    };
-
-    if (req.body.isAdmin) {
-        user.isAdmin = req.body.isAdmin;
-    };
 
     if (req.body.isConsultant) {
         user.isConsultant = req.body.isConsultant;
