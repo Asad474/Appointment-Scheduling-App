@@ -64,13 +64,8 @@ export const logoutUser = asyncHandler(async(req, res) => {
 // route GET /api/users/userprofile
 // @access PRIVATE
 export const getUserProfile = asyncHandler(async(req, res) => {
-    const user = {
-        id: req.user.id,
-        name: req.user.name,
-        email: req.user.email,
-        isConsultant: req.user.isConsultant,
-    }
-
+    const { id, name, email, isConsultant } = req?.user;
+    const user = { id, name, email, isConsultant }
     res.status(200).json(user);
 });
 
@@ -79,15 +74,16 @@ export const getUserProfile = asyncHandler(async(req, res) => {
 // route PUT /api/users/userprofile
 // @access PRIVATE
 export const updateUserProfile = asyncHandler(async(req, res) => {
+    const { name, email, isConsultant } = req.body;
     const user = await User.findOne({ where: {id: req?.user.id} });
 
     if (!user) {
         throw new BadRequestError('User not found.');
     }
 
-    user.name = req.body.name || user.name;
-    user.email = req.body.email || user.email;
-    user.isConsultant = req.body.isConsultant || user.isConsultant;
+    user.name = name || user.name;
+    user.email = email || user.email;
+    user.isConsultant = isConsultant || user.isConsultant;
 
     const updated_user = await user.save();
 
